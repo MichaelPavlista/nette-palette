@@ -213,8 +213,14 @@ class Palette
      */
     public function serverResponse()
     {
+        $requestImageQuery = '';
+
         try
         {
+            // Get image query from url.
+            $requestImageQuery = $this->generator->getRequestImageQuery();
+
+            // Process server response.
             $this->generator->serverResponse();
         }
         catch(\Exception $exception)
@@ -247,7 +253,7 @@ class Palette
 
             if($fallbackImage)
             {
-                $paletteQuery = preg_replace('/.*@(.*)/', $fallbackImage . '@$1', $_GET['imageQuery']);
+                $paletteQuery = preg_replace('/.*@(.*)/', $fallbackImage . '@$1', $requestImageQuery);
 
                 $picture  = $this->generator->loadPicture($paletteQuery);
                 $savePath = $this->generator->getPath($picture);
