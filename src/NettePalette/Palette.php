@@ -52,6 +52,7 @@ class Palette
      * @param string $storageUrl absolute live url to generated thumbs (and pictures) directory
      * @param null|string $basePath absolute path to website root directory
      * @param string $signingKey
+     * @param string $baseUrl
      * @param null|string $fallbackImage absolute or relative path to default image.
      * @param null $templates palette image query templates
      * @param null|string $websiteUrl
@@ -63,6 +64,7 @@ class Palette
         string $storageUrl,
         ?string $basePath,
         string $signingKey,
+        ?string $baseUrl = NULL,
         ?string $fallbackImage = NULL,
         $templates = NULL,
         ?string $websiteUrl = NULL,
@@ -70,7 +72,7 @@ class Palette
     )
     {
         // Setup image generator instance
-        $this->generator = new Server($storagePath, $storageUrl, $basePath, $signingKey);
+        $this->generator = new Server($storagePath, $storageUrl, $basePath, $signingKey, $baseUrl);
 
         // Register fallback image
         if($fallbackImage)

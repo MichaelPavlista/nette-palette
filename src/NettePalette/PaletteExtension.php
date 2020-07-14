@@ -63,6 +63,7 @@ class PaletteExtension extends CompilerExtension
                     $config['url'],
                     empty($config['basepath']) ? NULL : $config['basepath'],
                     $config['signingKey'],
+                    empty($config['baseUrl']) ? NULL : $config['baseUrl'],
                     empty($config['fallbackImage']) ? NULL : $config['fallbackImage'],
                     empty($config['template']) ? NULL : $config['template'],
                     empty($config['websiteUrl']) ? NULL : $config['websiteUrl'],
