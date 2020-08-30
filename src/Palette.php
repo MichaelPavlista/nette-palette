@@ -1,44 +1,33 @@
 <?php declare(strict_types=1);
 
-/**
- * This file is part of the Nette Palette (https://github.com/MichaelPavlista/nette-palette)
- * Copyright (c) 2016 Michael Pavlista (http://www.pavlista.cz/)
- *
- * @author Michael Pavlista
- * @email  michael@pavlista.cz
- * @link   http://pavlista.cz/
- * @link   https://www.facebook.com/MichaelPavlista
- * @copyright 2016
- */
+namespace Pavlista\NettePalette;
 
-namespace NettePalette;
-
-use Tracy\Debugger;
-use Palette\Picture;
-use Palette\Exception;
-use Nette\Utils\Strings;
-use Palette\Generator\Server;
-use Palette\SecurityException;
-use Palette\Generator\IPictureLoader;
 use Nette\Application\BadRequestException;
+use Nette\Utils\Strings;
+use Palette\Exception;
+use Palette\Generator\IPictureLoader;
+use Palette\Generator\Server;
+use Palette\Picture;
+use Palette\SecurityException;
+use Tracy\Debugger;
 
 /**
- * Palette service implementation for Nette Framework
  * Class Palette
- * @package NettePalette
+ * @package Pavlista\NettePalette
  */
 class Palette
 {
     /** @var Server */
-    protected $generator;
+    protected Server $generator;
 
     /** @var string|null */
-    protected $websiteUrl;
+    protected ?string $websiteUrl;
 
     /** @var bool is used relative urls for images? */
-    protected $isUrlRelative;
+    protected bool $isUrlRelative;
 
-    /** @var bool|string generator exceptions handling
+    /**
+     * @var bool|string generator exceptions handling
      * FALSE = exceptions are thrown
      * TRUE = exceptions are begin detailed logged via Tracy\Debugger
      * string = only exception messages are begin logged to specified log file via Tracy\Debugger
