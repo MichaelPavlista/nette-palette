@@ -1,0 +1,24 @@
+#
+# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+# https://nette.org/security-warning
+#
+parameters:
+
+application:
+	mapping:
+		*: Palette\DemoApp\*Module\Presenters\*Presenter
+
+extensions:
+    palette: Pavlista\NettePalette\DI\PaletteExtension
+
+palette:
+    websiteUrl: 'http://127.0.0.1'
+    path: /var/www/html/demo/www/thumbs
+    url: '/demo/www/thumbs'
+    signingKey: Nette\Utils\Random::generate(10) # TODO: Generate automatically in the background?
+
+session:
+	expiration: 14 days
+
+services:
+	router: Palette\DemoApp\RouterFactory::createRouter

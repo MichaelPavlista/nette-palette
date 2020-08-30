@@ -1,0 +1,14 @@
+{
+    "license": ["MIT"],
+    "require":
+    {
+        "php" : ">=7.4 <8",
+        "nette/nette": "v2.5.0",
+        "pavlista/nette-palette": "*",
+        "pavlista/palette": "*"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "minimum-stability": "stable"
+}

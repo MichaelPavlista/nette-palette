@@ -1,0 +1,29 @@
+# Apache configuration file (see httpd.apache.org/docs/current/mod/quickreference.html)
+
+### Forbid git access.
+RedirectMatch 404 /\.git
+
+### File access settings.
+# Apache 2.4
+<IfModule mod_authz_core.c>
+Require all granted
+</IfModule>
+
+# Apache 2.2
+<IfModule !mod_authz_core.c>
+Order Allow,Deny
+Allow from all
+</IfModule>
+
+### Mod rewrite settings.
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+
+    # Prevents files starting with dot to be viewed by browser.
+    RewriteRule /\.|^\. - [F]
+
+    # Front controller.
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule !\.(pdf|js|ico|css|rar|zip|tar\.gz)$ index.php [L]
+</IfModule>
