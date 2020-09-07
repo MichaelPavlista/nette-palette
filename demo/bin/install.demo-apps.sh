@@ -4,7 +4,7 @@
 SCRIPT_DIR=$(dirname "$(realpath -s "$0")")
 
 # Install nette-palette dependencies.
-( cd "$SCRIPT_DIR/../../" && composer update -o )
+( cd "$SCRIPT_DIR/../../" && composer clear-cache && composer update --prefer-source -o )
 
 # Install demo apps dependencies (${1//.}).
 function installNetteDemo
