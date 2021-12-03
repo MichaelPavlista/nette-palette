@@ -3,8 +3,10 @@
 namespace Pavlista\NettePalette;
 
 use Nette\Http\IRequest;
+use Nette\Utils\Strings;
 
 /**
+ * Třída zajišťující
  * Class PaletteServer
  * @package Pavlista\NettePalette
  */
@@ -35,6 +37,16 @@ class PaletteServer
      */
     public function handlePaletteRequest(): void
     {
-        $this->palette->serverResponse();
+        // V CLI je palette listener nedostupný (jelikož neznáme URL).
+        if (PHP_SAPI === 'cli')
+        {
+            return;
+        }
+
+        // Načteme aktuální URL adresu bez query stringu.
+        $url = $this->httpRequest->getUrl()->path;
+
+        // Předáme aktuální URL palette k vyhodnocení.
+        $this->palette->processUrl($url);
     }
 }

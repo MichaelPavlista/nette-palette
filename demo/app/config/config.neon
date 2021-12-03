@@ -13,9 +13,22 @@ extensions:
 
 palette:
     websiteUrl: 'http://127.0.0.1'
-    path: /var/www/html/demo/www/thumbs
-    url: '/demo/www/thumbs'
-    signingKey: Nette\Utils\Random::generate(10) # TODO: Generate automatically in the background?
+    path: %paletteThumbsDir%
+    url: %paletteThumbsUrl%
+    basePath: '/var/www/html/demo/www/images/'
+    signingKey: 'HOfU2RTxbimmaYmAnrQ1'
+
+#palette2:
+#    websiteUrl: 'http://web.cz/thumbs/'
+#    path: '/var/www/html/thumbs'
+#    urlPatter: 'basepath/template'
+#    basepath:
+#        "_" : ''
+#        images: '/var/www/html'
+#        template: '/var/www/malas'
+#    template:
+#        avatar: '100;100&Grayscale'
+
 
 session:
 	expiration: 14 days

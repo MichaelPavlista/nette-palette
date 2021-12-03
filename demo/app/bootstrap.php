@@ -22,6 +22,11 @@ $tempDir = $createDir(__DIR__ . '/../temp/' . NETTE_VERSION);
 
 // Create and configure nette container.
 $configurator = new Nette\Configurator;
+$configurator->addParameters([
+    'paletteThumbsDir' => '/var/www/html/demo/www/nette' . NETTE_VERSION . '/thumbs',
+    'paletteThumbsUrl' => '/demo/www/nette' . NETTE_VERSION . '/thumbs',
+]);
+
 $configurator->addConfig(__DIR__ . '/config/config.neon');
 $configurator->setTempDirectory($tempDir);
 $configurator->setDebugMode(TRUE); // Enable debug mode.

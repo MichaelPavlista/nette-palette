@@ -34,6 +34,11 @@ class Palette
      */
     protected $handleExceptions = TRUE;
 
+    protected $storageUrl;
+
+
+    protected PaletteConfig $paletteConfig;
+
 
     /**
      * Palette constructor.
@@ -58,6 +63,8 @@ class Palette
         IPictureLoader $pictureLoader = NULL
     )
     {
+        $this->storageUrl = $storageUrl;
+
         // Setup image generator instance
         $this->generator = new Server($storagePath, $storageUrl, $basePath, $signingKey);
 
@@ -90,7 +97,83 @@ class Palette
         {
             $this->generator->setPictureLoader($pictureLoader);
         }
+
+
+
+        $this->paletteConfig = new PaletteConfig();
+
     }
+
+
+    public function getStorageUrl(): string
+    {
+        return $this->storageUrl;
+    }
+
+
+
+    //   /template-absolute/
+
+
+
+
+    // TODO: Normalizovat ty parametry jako storage url apod.
+    // TODO: Přešit ten logger...!!!
+    // TODO: Přesouvat tu logiku asi do palette balíčku...
+    // UDělat tu palette konfiguraci!!
+
+
+
+    public function processUrl(string $urlPath): ?string
+    {
+        //// Pokud adresa nemíří na URL adresu úložiště Palette,
+        //// není co vyhodnocovat, vracíme NULL.
+        if (!Strings::startsWith($urlPath, $this->storageUrl))
+        {
+            return NULL;
+        }
+
+        //// Z URL adresy načteme parametry požadavku na Palette.
+        $paletteUrl = Strings::substring($urlPath, Strings::length($this->storageUrl));
+
+        if (preg_match('/^\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\/(.+)/', $paletteUrl, $paletteUrlParts) === FALSE)
+        {
+            return '404 Špatná palette query';
+        }
+
+        [, $template, $basePath, $imageRelativePath] = $paletteUrlParts;
+
+        //// Zvalidujeme jednotlivé parametry požadavku.
+        $t
+
+
+
+
+
+
+
+
+
+
+        dump([$template, $basePath, $imageRelativePath]);
+
+
+
+
+        exit;
+
+
+        return NULL;
+
+    }
+
+
+
+
+
+
+
+
 
 
     /**
