@@ -11,6 +11,7 @@ use Nette\DI\CompilerExtension;
 use Nette\DI\Definitions\FactoryDefinition;
 use Nette\DI\Definitions\ServiceDefinition;
 use Nette\PhpGenerator\ClassType;
+use Nette\PhpGenerator\Dumper;
 use Nette\Schema\Schema;
 use stdClass;
 
@@ -99,11 +100,13 @@ final class PaletteExtension extends CompilerExtension
     {
         parent::afterCompile($class);
 
+        $paletteInicializer = (new Dumper())->format(
+            '$this->getService(?)->handleRequest(); ',
+            $this->prefix(id: self::SERVICE_PALETTE_SERVER),
+        );
+
         // Load container initialize method definition.
         $initialize = $class->getMethod(name: 'initialize');
-        $initialize->setBody(
-            code: '$this->getService(?)->handleRequest(); ' . PHP_EOL . $initialize->getBody(),
-            args: [$this->prefix(id: self::SERVICE_PALETTE_SERVER)],
-        );
+        $initialize->setBody(code: "$paletteInicializer\n{$initialize->getBody()}");
     }
 }
