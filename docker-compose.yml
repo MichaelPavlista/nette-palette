@@ -1,5 +1,3 @@
-version: '2.1'
-
 services:
   nette-palette:
     container_name: nette-palette
@@ -11,4 +9,4 @@ services:
       - '80:80'
       - '443:443'
     volumes:
-      - ./../:/var/www/html
+      - ./:/var/www/html

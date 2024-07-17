@@ -1,0 +1,11 @@
+palette:
+	websiteUrl: 'http://127.0.0.1'
+	path: '/var/www/html/demo/www/thumbs/'
+	url: '/thumbs/'
+	basepath: '/var/www/html/demo/www/'
+	signingKey: 'HOfU2RTxbimmaYmAnrQ1'
+	fallbackImage: '/var/www/html/demo/www/images/default/default.jpg'
+	fallbackImages:
+		default1: '/var/www/html/demo/www/images/default/default-1.jpg'
+		default2: '/var/www/html/demo/www/images/default/default-2.jpg'
+		default3: '/var/www/html/demo/www/images/default/default-3.jpg'

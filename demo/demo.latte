@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Palette</title>
+</head>
+
+<body>
+
+{* Definice testovacích obrázků palette. *}
+{var string $imageJpg = realpath('images/portrait.jpg')}
+{var string $imagePng = realpath('images/portrait.png')}
+{var string $imageGif = realpath('images/portrait.gif')}
+{var string $imageWebp = realpath('images/portrait.webp')}
+
+<div>Filter</div>
+<img src="{$imageJpg|palette:'100;100|Grayscale'}" alt="Image" />
+
+<div>Standalone image</div>
+<IMG n:palette-src="$imageJpg, '300;300;fit&Grayscale'" alt="Image" />
+<img n:palette-src="$imageWebp, '300;300;fit&Grayscale'" alt="Image" />
+<img n:palette-src="$imageJpg, '300;300;exact&Grayscale'" alt="Image" />
+<img n:palette-src="$imageWebp, '300;300;fit&Grayscale&SaveAs;jpg'" alt="Image" />
+<img n:palette-src="$imageWebp, '300;300;fit&Grayscale&SaveAs;png'" alt="Image" />
+<img n:palette-src="$imageWebp, '300;300;fit&Grayscale&SaveAs;gif'" alt="Image" />
+
+<div>Default images</div>
+<img n:palette-src="nonExistentImage, '300;300;fit&Grayscale'" alt="Image" />
+<img n:palette-src="nonExistentImage, '300;300;fit&Grayscale&FallbackImg;default1'" alt="Image" />
+<img n:palette-src="nonExistentImage, '300;300;fit&Grayscale&FallbackImg;default3'" alt="Image" />
+
+</body>
+</html>

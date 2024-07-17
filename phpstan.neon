@@ -1,7 +1,31 @@
 includes:
+  - vendor/phpstan/phpstan-strict-rules/rules.neon
   - vendor/phpstan/phpstan-nette/extension.neon
+
 parameters:
   level: max
-  treatPhpDocTypesAsCertain: false
   paths:
     - src
+    - demo/www/index.php
+
+  # Zapnutí / konfigurace volitelných pravidel.
+  strictRules:
+    booleansInConditions: false
+    disallowedConstructs: false
+    noVariableVariables: false
+    strictCalls: false
+    numericOperandsInArithmeticOperators: false
+
+  reportUnmatchedIgnoredErrors: true
+  checkMissingIterableValueType: true
+  checkExplicitMixedMissingReturn: true
+  checkFunctionNameCase: true
+  checkInternalClassCaseSensitivity: true
+  checkTooWideReturnTypesInProtectedAndPublicMethods: true
+  rememberPossiblyImpureFunctionValues: true
+  checkAlwaysTrueCheckTypeFunctionCall: true
+  polluteScopeWithLoopInitialAssignments: false
+  polluteScopeWithAlwaysIterableForeach: false
+  treatPhpDocTypesAsCertain: false
+  reportMaybesInMethodSignatures: false
+  reportMaybesInPropertyPhpDocTypes: false
