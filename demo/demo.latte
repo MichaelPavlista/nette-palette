@@ -10,13 +10,37 @@
 <body>
 
 {* Definice testovacích obrázků palette. *}
-{var string $imageJpg = realpath('images/portrait.jpg')}
-{var string $imagePng = realpath('images/portrait.png')}
-{var string $imageGif = realpath('images/portrait.gif')}
-{var string $imageWebp = realpath('images/portrait.webp')}
+{var string $imageJpg = realpath('images/image.jpg')}
+{var string $imagePng = realpath('images/image.png')}
+{var string $imageGif = realpath('images/image.gif')}
+{var string $imageWebp = realpath('images/image.webp')}
+{var string $image = $imageJpg}
 
-<div>Filter</div>
-<img src="{$imageJpg|palette:'100;100|Grayscale'}" alt="Image" />
+<div>Resize</div>
+<img src="{$image|palette:'Resize;150;150;fit'}" alt="Image" />
+<img src="{$image|palette:'Resize;150;150;crop'}" alt="Image" />
+<img src="{$image|palette:'Resize;150;150;exact'}" alt="Image" />
+<img src="{$image|palette:'Resize;150;150;fill'}" alt="Image" />
+<img src="{$image|palette:'Resize;150;150;stretch'}" alt="Image" />
+
+<div>Watermark</div>
+<img src="{$image|palette:'400;400|Watermark;images/watermark-text.png;repeat;0.1;1'}" alt="Image" />
+<img src="{$image|palette:'400;400|Watermark;images/watermark-text.png;center;0'}" alt="Image" />
+<img src="{$image|palette:'400;400|Watermark;images/watermark-text.png;repeat;0.5;30'}" alt="Image" />
+<img src="{$image|palette:'400;400|Watermark;images/watermark-text.png;top;0.25;20;10,-10'}" alt="Image" />
+
+<div>Opacity</div>
+<img src="{$image|palette:'200;200|Opacity;0.5'}" alt="Image" />
+
+<div>Border</div>
+<img src="{$image|palette:'200;200|Border;3;3;#ccc'}" alt="Image" />
+
+<div>Rotate</div>
+<img src="{$image|palette:'200;200|Rotate;47'}" alt="Image" />
+
+<div>Colorize</div>
+<img src="{$image|palette:'200;200|Colorize;70,0,0'}" alt="Image" />
+<img src="{$image|palette:'200;200|Colorize;#ccc'}" alt="Image" />
 
 <div>Standalone image</div>
 <IMG n:palette-src="$imageJpg, '300;300;fit&Grayscale'" alt="Image" />

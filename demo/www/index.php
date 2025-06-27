@@ -9,7 +9,8 @@ use Tracy\Debugger;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-Debugger::enable(mode: Debugger::Development);
+Debugger::enable(mode: Debugger::Development, logDirectory: __DIR__ . '/../log');
+Debugger::$strictMode = true;
 
 $loader = new Nette\DI\ContainerLoader(tempDirectory: __DIR__ . '/../temp', autoRebuild: Debugger::isEnabled());
 
